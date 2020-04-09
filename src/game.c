@@ -64,12 +64,8 @@ void event_game(win_t *w, global_t *g)
     if (sfRenderWindow_pollEvent(w->win, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(w->win);
-        if (event.type == sfEvtKeyReleased && event.type == sfKeyEscape) {
-            if (g->tele == 1)
-                g->tele = 0;
-            else
-                sfRenderWindow_close(w->win);
-        }
+        if (sfKeyboard_isKeyPressed(sfKeyEscape))
+            sfRenderWindow_close(w->win);
         if (event.type == sfEvtMouseButtonReleased) {
             if (g->tele == 1)
                 check_mouse(w, g);
