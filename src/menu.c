@@ -11,6 +11,7 @@ void check_pos_menu(menu_t *m, sfVector2i vect, sfRenderWindow *w, global_t *g)
 {
     if (button_is_clicked(m->rplay, vect) == 1) {
         sfMusic_stop(m->mmusic);
+        sfMusic_play(g->font_music);
         g->scene = 3;
     }
     if (button_is_clicked(m->rquit, vect) == 1) {

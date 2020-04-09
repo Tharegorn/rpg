@@ -49,6 +49,8 @@ typedef struct global_game
     sfSprite *player;
     sfSprite *background;
     sfMusic *font_music;
+    sfSprite *world;
+    int tele;
     int volume;
     int player_x;
     int player_y;
