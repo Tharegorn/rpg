@@ -10,18 +10,20 @@
 int check_option(char **tab)
 {
     int p = 0;
-    if (options(tab, "volume") == -84) {
+    if (options(tab, "volume=") == -84) {
         error_in_file();
         return (84);
     }
-    if (options(tab, "window.x") == -84) {
+    if (options(tab, "window.x=") == -84) {
         error_in_file();
         return (84);
     }
-    if (options(tab, "window.y") == -84) {
+    if (options(tab, "window.y=") == -84) {
         error_in_file();
         return (84);
     }
+    if (check_params(tab, "volume=") == -84)
+        return (84);
     return (0);
 }
 

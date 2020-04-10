@@ -80,7 +80,8 @@ void settings(win_t *w, global_t *g, menu_t *m);
 void event_menu(menu_t *m, win_t *w, global_t *g);
 
 // init
-
+int get_volume(void);
+int check_params(char **tab, char *str);
 void not_dir(void);
 void error_in_file(void);
 void init_game(global_t *g);

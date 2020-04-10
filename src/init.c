@@ -47,7 +47,7 @@ void init_volume_one(menu_t *m)
 
 void init_menu_two(menu_t *m)
 {
-    m->volume = 100;
+    m->volume = get_volume();
     m->mmusic = sfMusic_createFromFile("sounds/menu.ogg");
     sfMusic_setLoop(m->mmusic, sfTrue);
     sfMusic_setVolume(m->mmusic, m->volume);
