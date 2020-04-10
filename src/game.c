@@ -10,17 +10,15 @@
 void check_mouse(win_t *w, global_t *g)
 {
     sfVector2i vect;
-    sfWindow *window = NULL;
 
     printf("bite\n");
-    vect = sfMouse_getPosition(window);
+    vect = sfMouse_getPositionRenderWindow(w->win);
     if ((vect.x >= 500 && vect.x <= 975) && (vect.y >= 400 && vect.y <= 566))
         printf("Buton 1 ! \n");
     else if ((vect.x >= 985 && vect.x <= 1460) && (vect.y >= 400 && vect.y <= 566))
         printf("Buton 2 ! \n");
     else
         g->tele = 0;
-    sfWindow_destroy(window);
 }
 
 void left_rect(global_t *g)
@@ -64,8 +62,10 @@ void event_game(win_t *w, global_t *g)
     if (sfRenderWindow_pollEvent(w->win, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(w->win);
-        if (sfKeyboard_isKeyPressed(sfKeyEscape))
-            sfRenderWindow_close(w->win);
+        if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
+            g->scene = 1;
+            printf("%d\n", g->scene);
+        }
         if (event.type == sfEvtMouseButtonReleased) {
             if (g->tele == 1)
                 check_mouse(w, g);

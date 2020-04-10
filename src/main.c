@@ -47,16 +47,14 @@ void game_loop(win_t *w, menu_t *m, global_t *g)
 {
     g->scene = 0;
     while (sfRenderWindow_isOpen(w->win)) {
+        g->volume = m->volume;
         sfRenderWindow_clear(w->win, sfBlack);
-        if (g->scene == 0) {
+        if (g->scene == 0)
             menu(m, w, g);
-        }
-        if (g->scene == 1) {
-            sfRenderWindow_drawSprite(w->win, m->fontsettings, NULL);
-        }
-        if (g->scene == 3) {
+        if (g->scene == 1)
+            settings(w, g, m);
+        if (g->scene == 3)
             game_functions(g, w);
-        }
         sfRenderWindow_display(w->win);
     }
     destroy(m, w);
