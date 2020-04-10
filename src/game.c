@@ -64,7 +64,6 @@ void event_game(win_t *w, global_t *g)
             sfRenderWindow_close(w->win);
         if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
             g->scene = 1;
-            printf("%d\n", g->scene);
         }
         if (event.type == sfEvtMouseButtonReleased) {
             if (g->tele == 1)

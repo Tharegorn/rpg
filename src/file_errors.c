@@ -17,7 +17,7 @@ int options(char **tab, char *str)
     return -84;
 }
 
-void error_in_file()
+void error_in_file(void)
 {
     my_putstr("\033[33m");
     my_putstr("Syntax error in file : ");
@@ -26,7 +26,7 @@ void error_in_file()
     my_putstr("\033[0m");
 }
 
-void not_dir()
+void not_dir(void)
 {
     my_putstr("\033[31m");
     my_putstr("ERROR :");

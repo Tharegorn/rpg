@@ -12,23 +12,23 @@ void modif_volume(menu_t *m, sfVector2i vect)
     if (button_is_clicked(m->one, vect) == 1)
         m->volume = 10;
     if (button_is_clicked(m->two, vect) == 1)
-    m->volume = 20;
+        m->volume = 20;
     if (button_is_clicked(m->three, vect) == 1)
-    m->volume = 30;
+        m->volume = 30;
     if (button_is_clicked(m->four, vect) == 1)
-    m->volume = 40;
+        m->volume = 40;
     if (button_is_clicked(m->five, vect) == 1)
-    m->volume = 50;
+        m->volume = 50;
     if (button_is_clicked(m->six, vect) == 1)
-    m->volume = 60;
+        m->volume = 60;
     if (button_is_clicked(m->seven, vect) == 1)
-    m->volume = 70;
+        m->volume = 70;
     if (button_is_clicked(m->height, vect) == 1)
-    m->volume = 80;
+        m->volume = 80;
     if (button_is_clicked(m->nine, vect) == 1)
-    m->volume = 90;
+        m->volume = 90;
     if (button_is_clicked(m->ten, vect) == 1)
-    m->volume = 100;
+        m->volume = 100;
 
 }
 
@@ -56,7 +56,7 @@ void print_volume(win_t *w, menu_t *m)
         sfRenderWindow_drawRectangleShape(w->win, m->one, NULL);
 }
 
-void settings_event(win_t *w, global_t *g, menu_t *m)
+void settings_event(win_t *w, menu_t *m)
 {
     sfEvent event;
     sfWindow *actual = NULL;
@@ -65,9 +65,6 @@ void settings_event(win_t *w, global_t *g, menu_t *m)
     if (sfRenderWindow_pollEvent(w->win, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(w->win);
-        if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
-            g->scene = 0;
-        }
         if (event.type == sfEvtMouseButtonReleased) {
             vect = sfMouse_getPosition(actual);
             modif_volume(m, vect);
@@ -79,8 +76,8 @@ void settings_event(win_t *w, global_t *g, menu_t *m)
 void settings(win_t *w, global_t *g, menu_t *m)
 {
     sfMusic_setVolume(m->mmusic, m->volume);
-    sfMusic_setVolume(g->font_music, g->volume);
-    settings_event(w, g, m);
+    sfMusic_setVolume(g->font_music, m->volume);
+    settings_event(w, m);
     sfRenderWindow_drawSprite(w->win, m->fontmenu, NULL);
     sfRenderWindow_drawSprite(w->win, m->fontsettings, NULL);
     print_volume(w, m);

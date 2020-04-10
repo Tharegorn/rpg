@@ -25,7 +25,7 @@ int check_option(char **tab)
     return (0);
 }
 
-int check_files()
+int check_files(void)
 {
     char *file = malloc(sizeof(char) * 200);
     char **tab = NULL;

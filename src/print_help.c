@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void print_help()
+void print_help(void)
 {
     my_putstr("bon faudra écrire ici");
 }

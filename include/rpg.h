@@ -81,8 +81,8 @@ void event_menu(menu_t *m, win_t *w, global_t *g);
 
 // init
 
-void not_dir();
-void error_in_file();
+void not_dir(void);
+void error_in_file(void);
 void init_game(global_t *g);
 sfText *create_font(sfText *text, char *str, int x, int y);
 void init_menu(menu_t *m);
@@ -104,6 +104,6 @@ void draw_text_menu(menu_t *m, win_t *w);
 void draw_rect_menu(menu_t *m, win_t *w);
 void menu(menu_t *m, win_t *w, global_t *g);
 
-void print_help();
+void print_help(void);
 
 #endif

@@ -20,15 +20,16 @@ void fill_color(menu_t *m)
     sfRectangleShape_setFillColor(m->one, sfColor_fromRGB(0, 128, 0));
     sfRectangleShape_setFillColor(m->two, sfColor_fromRGB(50, 205, 50));
     sfRectangleShape_setFillColor(m->three, sfColor_fromRGB(173, 255, 47));
-    sfRectangleShape_setFillColor(m->four, sfColor_fromRGB(230, 255,10));
-    sfRectangleShape_setFillColor(m->five, sfColor_fromRGB( 255, 255,0));
-    sfRectangleShape_setFillColor(m->six, sfColor_fromRGB(255,215,0));
-    sfRectangleShape_setFillColor(m->seven, sfColor_fromRGB( 255, 200,0));
-    sfRectangleShape_setFillColor(m->height, sfColor_fromRGB( 255, 165,0));
-    sfRectangleShape_setFillColor(m->nine, sfColor_fromRGB( 255, 140,0));
-    sfRectangleShape_setFillColor(m->ten, sfColor_fromRGB( 255, 0,0));
+    sfRectangleShape_setFillColor(m->four, sfColor_fromRGB(230, 255, 10));
+    sfRectangleShape_setFillColor(m->five, sfColor_fromRGB(255, 255, 0));
+    sfRectangleShape_setFillColor(m->six, sfColor_fromRGB(255, 215, 0));
+    sfRectangleShape_setFillColor(m->seven, sfColor_fromRGB(255, 200, 0));
+    sfRectangleShape_setFillColor(m->height, sfColor_fromRGB(255, 165, 0));
+    sfRectangleShape_setFillColor(m->nine, sfColor_fromRGB(255, 140, 0));
+    sfRectangleShape_setFillColor(m->ten, sfColor_fromRGB(255, 0, 0));
 
 }
+
 void init_volume_one(menu_t *m)
 {
     m->one = rec(m->one, (sfVector2f) { 903, 610}, (sfVector2f) {68, 20});
@@ -63,6 +64,7 @@ void init_menu_two(menu_t *m)
     sfSprite_setScale(m->fontmenu, (sfVector2f) {1.54, 1.54});
     init_volume_one(m);
 }
+
 void init_menu(menu_t *m)
 {
     m->rplay = sfRectangleShape_create();
