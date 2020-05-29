@@ -22,7 +22,7 @@ int check_params(char **tab, char *str)
     int line = get_tab(tab, str);
     int a = 0;
     int n = 0;
-    char *stock = malloc(sizeof (char) * 4);
+    char *stock = malloc(sizeof(char) * 4);
 
     for (int j = 0; tab[line][j]; j++) {
         if (tab[line][j] == '=')

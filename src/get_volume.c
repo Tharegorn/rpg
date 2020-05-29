@@ -22,7 +22,7 @@ int check_param(char **tab, char *str)
     int line = get_tabb(tab, str);
     int a = 0;
     int n = 0;
-    char *stock = malloc(sizeof (char) * 4);
+    char *stock = malloc(sizeof(char) * 4);
 
     for (int j = 0; tab[line][j]; j++) {
         if (tab[line][j] == '=')
@@ -40,7 +40,7 @@ int check_param(char **tab, char *str)
 int get_volume(void)
 {
     int fd = open("options.txt", O_RDONLY);
-    char *content = malloc(sizeof (char) * 200);
+    char *content = malloc(sizeof(char) * 200);
     char **tab = NULL;
 
     read(fd, content, 200);

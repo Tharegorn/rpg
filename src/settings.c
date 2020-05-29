@@ -7,6 +7,21 @@
 
 #include "rpg.h"
 
+void but_clicked(menu_t *m, sfVector2i vect, global_t *g, win_t *w)
+{
+    int stock;
+
+    if (button_is_clicked(m->prev, vect) == 1) {
+        stock = g->scene;
+        g->scene = g->prev;
+        g->prev = stock;
+    }
+    if (button_is_clicked(m->exit, vect) == 1)
+        sfRenderWindow_close(w->win);
+    if (button_is_clicked(m->home, vect) == 1)
+        g->scene = 0;
+}
+
 void modif_volume(menu_t *m, sfVector2i vect)
 {
     if (button_is_clicked(m->one, vect) == 1)
@@ -56,7 +71,7 @@ void print_volume(win_t *w, menu_t *m)
         sfRenderWindow_drawRectangleShape(w->win, m->one, NULL);
 }
 
-void settings_event(win_t *w, menu_t *m)
+void settings_event(win_t *w, menu_t *m, global_t *g)
 {
     sfEvent event;
     sfWindow *actual = NULL;
@@ -68,6 +83,7 @@ void settings_event(win_t *w, menu_t *m)
         if (event.type == sfEvtMouseButtonReleased) {
             vect = sfMouse_getPosition(actual);
             modif_volume(m, vect);
+            but_clicked(m, vect, g, w);
         }
     }
     sfWindow_destroy(actual);
@@ -77,8 +93,11 @@ void settings(win_t *w, global_t *g, menu_t *m)
 {
     sfMusic_setVolume(m->mmusic, m->volume);
     sfMusic_setVolume(g->font_music, m->volume);
-    settings_event(w, m);
+    settings_event(w, m, g);
     sfRenderWindow_drawSprite(w->win, m->fontmenu, NULL);
     sfRenderWindow_drawSprite(w->win, m->fontsettings, NULL);
     print_volume(w, m);
+    sfRenderWindow_drawRectangleShape(w->win, m->prev, NULL);
+    sfRenderWindow_drawRectangleShape(w->win, m->exit, NULL);
+    sfRenderWindow_drawRectangleShape(w->win, m->home, NULL);
 }

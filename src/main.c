@@ -9,16 +9,7 @@
 
 int check_option(char **tab)
 {
-    int p = 0;
     if (options(tab, "volume=") == -84) {
-        error_in_file();
-        return (84);
-    }
-    if (options(tab, "window.x=") == -84) {
-        error_in_file();
-        return (84);
-    }
-    if (options(tab, "window.y=") == -84) {
         error_in_file();
         return (84);
     }
@@ -51,15 +42,10 @@ void game_loop(win_t *w, menu_t *m, global_t *g)
     while (sfRenderWindow_isOpen(w->win)) {
         g->volume = m->volume;
         sfRenderWindow_clear(w->win, sfBlack);
-        if (g->scene == 0)
-            menu(m, w, g);
-        if (g->scene == 1)
-            settings(w, g, m);
-        if (g->scene == 3)
-            game_functions(g, w);
+        scene_selector(w, m, g);
         sfRenderWindow_display(w->win);
     }
-    destroy(m, w);
+    destroy(m, w, g);
 }
 
 int main(int ac, char **av)
@@ -74,8 +60,10 @@ int main(int ac, char **av)
     w->win = createwin(w->win);
     menu_t *m = malloc(sizeof(menu_t));
     global_t *g = malloc(sizeof(global_t));
-    init_menu(m);
-    init_game(g);
+    g->mob = malloc(sizeof(mob_t));
+    g->p = malloc(sizeof(player_t));
+    g->boss = malloc(sizeof(boss_t));
+    initializer(m, g);
     sfMusic_play(m->mmusic);
     game_loop(w, m, g);
     return (0);

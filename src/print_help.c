@@ -9,5 +9,8 @@
 
 void print_help(void)
 {
-    my_putstr("bon faudra écrire ici");
+    my_putstr("RPG HELP\n\tUsage\nT : Open the portals\nE : Open NPC shop\n");
+    my_putstr("C : Open Player inventory\nESC : Open Pause menu\n");
+    my_putstr("Left arroy : move player\nRight Arrow : Move player\n");
+    my_putstr("K : Speed the game\nD : Activate stuffing mode\nSpace : Turns off stuffed mode\n");
 }

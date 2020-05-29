@@ -7,14 +7,16 @@
 
 #include "rpg.h"
 
-void destroy(menu_t *m, win_t *w)
+void destroy(menu_t *m, win_t *w, global_t *g)
 {
+    sfSprite_destroy(m->howto);
+    destroy_menu(m);
+    free(m);
     sfRenderWindow_destroy(w->win);
     free(w);
-    sfRectangleShape_destroy(m->rhowto);
-    sfRectangleShape_destroy(m->rsettings);
-    sfRectangleShape_destroy(m->rplay);
-    sfRectangleShape_destroy(m->rquit);
-    sfMusic_destroy(m->mmusic);
-    free(m);
+    destroy_mob(g);
+    destroy_player(g);
+    destroy_boss(g);
+    destroy_game(g);
+    free(g);
 }
